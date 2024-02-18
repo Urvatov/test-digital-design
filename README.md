@@ -58,7 +58,7 @@ SELECT * FROM employee WHERE name LIKE 'Р%н' LIMIT 1;
 ![изображение](https://github.com/Urvatov/test-digital-design/assets/117490456/114740fb-42d8-4f46-a4e7-76ca351ee53a)
 
 [Программа](TestApp/bin/Debug/net8.0/TestApp.exe)  
-[Код] (TestApp/Program.cs)  
+[Код](TestApp/Program.cs)  
 
 [Текст Толстого](TestApp/bin/Debug/net8.0/textfile.txt)  
 [Текст Достоевского](TestApp/bin/Debug/net8.0/textfile2.txt)
