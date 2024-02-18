@@ -5,7 +5,8 @@
 
 SELECT *
 FROM employee
-WHERE salary = (SELECT MAX(salary) FROM employee);  
+WHERE salary = (SELECT MAX(salary) FROM employee)  
+LIMIT 1;  
 
 Данный запрос выбирает все строки из таблицы emplpyee, где зарплата равна максимальной в этой же таблице.  
 
@@ -27,6 +28,17 @@ FROM ManagerChain;
 Данный запрос вычисляет максимальную длину цепочки руководителей в таблице сотрудников, 
 начиная с корневых элементов, рекурсивно добавляя подчиненных для каждого выбранного 
 корневого элемента, и определяя максимальную глубину этой иерархии, начиная с нулевой глубины. 
+
+## Запрос 3 — Отдел, с максимальной суммарной зарплатой сотрудников.  
+
+SELECT d.name AS department_name, SUM(e.salary) AS total_salary  
+FROM department d  
+JOIN employee e ON d.id = e.department_id  
+GROUP BY d.name  
+ORDER BY total_salary DESC  
+LIMIT 1;  
+
+Данный запрос выбирает название отдела и суммарную зарплату всех сотрудников этого отдела, объединяя таблицы employee и department и группируя их по названию. 
 
 
 
