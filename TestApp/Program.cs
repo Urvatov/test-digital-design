@@ -21,8 +21,10 @@
                 else { words.Add(clean, 1); }
             }
 
+            var sorted_words = words.OrderByDescending(word => word.Value);
+
             Console.WriteLine("Уникальные слова:");
-            foreach (var word in words)
+            foreach (var word in sorted_words)
             {
                 Console.WriteLine($"{word.Key} : {word.Value}");
             }
