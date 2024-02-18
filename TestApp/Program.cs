@@ -1,19 +1,21 @@
-﻿namespace TestApp
+﻿using System.Diagnostics;
+
+namespace TestApp
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.Write("Укажите путь до файла: ");
-            string PATH = Console.ReadLine();
+            string PATH = Console.ReadLine(); 
             //string PATH = "textfile.txt";
 
-            string RESULTPATH = "result.txt";
+            string RESULTPATH = "result.txt"; 
             string text = File.ReadAllText(PATH);
 
             Console.WriteLine($"Текст получен из {PATH}");
 
-            Dictionary<string, int> words = new Dictionary<string, int>();
+            Dictionary<string, int> words = new Dictionary<string, int>(); 
             char[] wordSeparations = { ' ', '.', ',', ';', ':', '!', '?', '-', '—', '(', ')', '[', ']', '\'', '\"', '\n', '\r'};
 
             string[] splitText = text.Split(wordSeparations, StringSplitOptions.RemoveEmptyEntries);
@@ -38,6 +40,7 @@
             }
 
             Console.WriteLine($"Готово. Результат записан в {RESULTPATH} \n \nНажмите любую клавишу для выхода." );
+            Process.Start("notepad.exe", RESULTPATH);
             Console.ReadKey();
         }
     }
