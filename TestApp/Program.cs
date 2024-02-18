@@ -4,12 +4,13 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите текст" );
-            string? text = Console.ReadLine();
+            string PATH = "textfile.txt";
+            string RESULTPATH = "result.txt";
+            string text = File.ReadAllText(PATH);
 
 
             Dictionary<string, int> words = new Dictionary<string, int>();
-            char[] wordSeparations = { ' ', '.', ',', ';', ':', '!', '?', '-', '—', '\'', '\"' };
+            char[] wordSeparations = { ' ', '.', ',', ';', ':', '!', '?', '-', '—', '(', ')', '[', ']', '\'', '\"', '\n'};
 
             string[] splitText = text.Split(wordSeparations, StringSplitOptions.RemoveEmptyEntries);
 
@@ -21,15 +22,17 @@
                 else { words.Add(clean, 1); }
             }
 
-            var sorted_words = words.OrderByDescending(word => word.Value);
+            var sortedWords = words.OrderByDescending(word => word.Value);
 
-            Console.WriteLine("Уникальные слова:");
-            foreach (var word in sorted_words)
+            using (StreamWriter writer = new StreamWriter(RESULTPATH)) 
             {
-                Console.WriteLine($"{word.Key} : {word.Value}");
+                foreach (var word in sortedWords)
+                {
+                    writer.WriteLine($"{word.Key} : {word.Value}");
+                }
             }
 
-
+            Console.WriteLine("Готово");
         }
     }
 }
